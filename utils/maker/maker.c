@@ -89,42 +89,16 @@ int disk_save(void)
 
 int field_patch(int field)
 {
+    char message[] = "WELCOME TO THE LCM+L TSS/8 SYSTEM.";
+    int i=0;
     switch (field) {
     case 0:
-	fields[0][07600] = 0323; /* login message */
-	fields[0][07601] = 0331;
-	fields[0][07602] = 0323;
-	fields[0][07603] = 0324;
-	fields[0][07604] = 0305;
-	fields[0][07605] = 0315;
-	fields[0][07606] = 0240;
-	fields[0][07607] = 0311;
-	fields[0][07610] = 0323;
-	fields[0][07611] = 0240;
-	fields[0][07612] = 0304;
-	fields[0][07613] = 0317;
-	fields[0][07614] = 0327;
-	fields[0][07615] = 0316;
-	fields[0][07616] = 0254;
-	fields[0][07617] = 0240;
-	fields[0][07620] = 0311;
-	fields[0][07621] = 0316;
-	fields[0][07622] = 0303;
-	fields[0][07623] = 0256;
-	fields[0][07624] = 0215;
-	fields[0][07625] = 0212;
-	fields[0][07626] = 0215;
-	fields[0][07627] = 0212;
-	fields[0][07630] = 0000;
-	fields[0][07631] = 0323;
-	fields[0][07632] = 0310;
-	fields[0][07633] = 0301;
-	fields[0][07634] = 0322;
-	fields[0][07635] = 0311;
-	fields[0][07636] = 0316;
-	fields[0][07637] = 0307;
-	fields[0][07640] = 0000;
-        break;
+	// Set login message
+        for(i=0;i<sizeof(message);i++)
+       	{
+	    fields[0][07600+i] = message[i] | 0200;       
+        } 
+	break;
     case 2:
 	fields[2][01403] = 6; /* CORFLD */
         break;

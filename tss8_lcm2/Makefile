@@ -2,7 +2,7 @@
 MACRO = ../utils/macro/macro8x
 SHOWBIN = ../utils/showbin
 
-all: init.bin fip.bin si.bin ts8.bin
+all: init.bin fip.bin si.bin ts8.bin boot.bin
 
 clean:
 	rm -f *.bin *.prm *.lst *.err *.mem *.dump
@@ -22,6 +22,10 @@ si.bin:
 ts8.bin:
 	rm -f ts8.err ts8.lst
 	$(MACRO) -o ts8 melrose.pal param.pal link.pal ts8.pal
+
+boot.bin:
+	rm -f boot.err boot.lst
+	$(MACRO) -o boot boot.pal
 
 xxx:
 	$(SHOWBIN) fip.bin >fip.src.mem
