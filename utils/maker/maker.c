@@ -99,7 +99,9 @@ int field_patch(int field)
 	    fields[0][07600+i] = message[i] | 0200;       
         } 
 	break;
+
     case 2:
+	fields[2][02402] = 07773;	/* 50 Hz Clock */
 	fields[2][01403] = 6; /* CORFLD */
         break;
     }
