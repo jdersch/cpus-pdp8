@@ -39,66 +39,66 @@ Starting TSS-8 and logging in:
 ------------------------------
 Once started, INIT will print the following:
 
-  LOAD, DUMP, START, ETC?
+    LOAD, DUMP, START, ETC?
 
 Answer "START" (or just "S") and you will be prompted for the date and time.  Choose a date between 1974 and 1984.
 
-  MONTH-DAY-YEAR: 11-25-79
-  HR:MIN - 11:46
+    MONTH-DAY-YEAR: 11-25-79
+    HR:MIN - 11:46
 
 Hit Return and you will be at the monitor's dot prompt (".").  The only command accepted at this point is a LOGIN command.  This command will not be echoed.
 
 The following accounts are set up on tss8_rk_lcm.dsk:
 
-  1 - System Manager - Password: 1234
-  2 - Librarian - Password: 1234
-  1000 - Guest account - Password: LCML
+    1 - System Manager - Password: 1234
+    2 - Librarian - Password: 1234
+    1000 - Guest account - Password: LCML
 
 Once logged in, you will be greeted with a banner, and will be at the monitor prompt. 
 
-  TSS/8.24+  JOB 01  [00,01]  K00    11:45:16
+    TSS/8.24+  JOB 01  [00,01]  K00    11:45:16
 
-  WELCOME TO THE LCM+L TSS/8 SYSTEM.
-  .
+    WELCOME TO THE LCM+L TSS/8 SYSTEM.
+    .
 
 Several programs are at your disposal ("R CAT" while logged in under the Librarian account will show you what's available):
 
-  .R CAT
+    .R CAT
 
-  DISK FILES FOR USER  0, 2 ON 25-NOV-79
+    DISK FILES FOR USER  0, 2 ON 25-NOV-79
 
-  NAME      SIZE  PROT    DATE
-  PALD  .SAV  16   12  31-MAR-76
-  LOADER.SAV   4   12  31-MAR-76
-  FORT  .SAV   6   12  31-MAR-76
-  FOSL  .SAV   6   12  31-MAR-76
-  PIP   .SAV  10   12  31-MAR-76
-  TSTLPT.SAV   2   12  31-MAR-76
-  LOGOUT.SAV   6   12  31-MAR-76
-  SYSTAT.SAV   5   12  31-MAR-76
-  EDIT  .SAV   8   12  31-MAR-76
-  FOCAL .SAV  16   12  31-MAR-76
-  BASIC .SAV  38   12  31-MAR-76
-  COPY  .SAV  10   12  31-MAR-76
-  CAT   .SAV   6   12  31-MAR-76
-  GRIPE .SAV   5   12  31-MAR-76
-  LOGID .SAV   4   12  31-MAR-76
-  PUTR  .SAV  21   12   3-FEB-84
-  ODTHI .SAV   2   12  29-FEB-84
-  FLAP  .SAV   1   12   7-APR-84
-  PTLOAD.SAV   1   12  29-APR-84
-  BLANK .SAV   1   12   9-JUN-84
-  DTTEST.SAV   2   12  26-JUN-84
-  INIT  .SAV  17   12  29-JUL-84
-  HELPR .BIN   3   12  21-NOV-79
-  HELP        17   12  21-NOV-79
-  CHESS .SAV  17   12  11-NOV-74
-  ALGOL .SAV  32   12  21-NOV-79
-  CHEESE.BAS  19   12  21-NOV-79
-  ACTUNG.SAV   5   12  21-NOV-79
-  LISP  .SAV  17   12  25-NOV-79
+    NAME      SIZE  PROT    DATE
+    PALD  .SAV  16   12  31-MAR-76
+    LOADER.SAV   4   12  31-MAR-76
+    FORT  .SAV   6   12  31-MAR-76
+    FOSL  .SAV   6   12  31-MAR-76
+    PIP   .SAV  10   12  31-MAR-76
+    TSTLPT.SAV   2   12  31-MAR-76
+    LOGOUT.SAV   6   12  31-MAR-76
+    SYSTAT.SAV   5   12  31-MAR-76
+    EDIT  .SAV   8   12  31-MAR-76
+    FOCAL .SAV  16   12  31-MAR-76
+    BASIC .SAV  38   12  31-MAR-76
+    COPY  .SAV  10   12  31-MAR-76
+    CAT   .SAV   6   12  31-MAR-76
+    GRIPE .SAV   5   12  31-MAR-76
+    LOGID .SAV   4   12  31-MAR-76
+    PUTR  .SAV  21   12   3-FEB-84
+    ODTHI .SAV   2   12  29-FEB-84
+    FLAP  .SAV   1   12   7-APR-84
+    PTLOAD.SAV   1   12  29-APR-84
+    BLANK .SAV   1   12   9-JUN-84
+    DTTEST.SAV   2   12  26-JUN-84
+    INIT  .SAV  17   12  29-JUL-84
+    HELPR .BIN   3   12  21-NOV-79
+    HELP        17   12  21-NOV-79
+    CHESS .SAV  17   12  11-NOV-74
+    ALGOL .SAV  32   12  21-NOV-79
+    CHEESE.BAS  19   12  21-NOV-79
+    ACTUNG.SAV   5   12  21-NOV-79
+    LISP  .SAV  17   12  25-NOV-79
 
-  TOTAL DISK SEGMENTS:  297    QUOTA: 1575
+    TOTAL DISK SEGMENTS:  297    QUOTA: 1575
 
 
 Reconfiguring the system
@@ -109,7 +109,7 @@ Most of the configuration is in tss8_lcm2/melrose.pal -- this is fairly straight
 
 To adjust the amount of core in your system, set CORMEM to the appropriate value -- 70 for 32KW, 20 for 12KW, etc.  Additionally, a small change to the "maker" program in utils/maker needs to be made:  The line
 
-  fields[2][01403] = 6; /* CORFLD */
+    fields[2][01403] = 6; /* CORFLD */
   
 in field_patch() must be modified to the number of user-available core fields on your system.  For a 32KW system this is 6 (TSS-8 takes up two fields, leaving 6 available).  On a 12KW system this is 1.
 
@@ -121,7 +121,7 @@ To rebuild the TSS-8 code, do a "make clean; make" in tss8_lcm2.  If there are a
 
 Once the TSS-8 binaries are rebuilt, they need to be loaded into a disk image -- the tools for doing so are in utils/maker.  This tool can be rebuilt (if need be) by again doing a "make clean; make".  Then the tss8_rk_lcm.dsk image can be updated with new binaries and patches via:
 
-  maker lcm
+    maker lcm
   
 The resultant disk image can then be run in simh or on real hardware.
 
