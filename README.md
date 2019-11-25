@@ -16,17 +16,17 @@ SIMH Setup:
 -----------
 Under simh, the following script will set up the hardware and bootstrap TSS-8 INIT:
 
-set df disabled
-set rf disabled
-set rk enabled
-set dt disabled
-att rk0 tss8_rk_lcm.dsk
+    set df disabled
+    set rf disabled
+    set rk enabled
+    set dt disabled
+    att rk0 tss8_rk_lcm.dsk
 
-set cpu 32k
-attach ttix 4000
+    set cpu 32k
+    attach ttix 4000
 
-load boot.bin
-run 200
+    load boot.bin
+    run 200
 
 Running on real hardware:
 -------------------------
