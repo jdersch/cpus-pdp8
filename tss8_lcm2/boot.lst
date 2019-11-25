@@ -1,0 +1,47 @@
+
+      / RK05 BOOTSTRAP VERSION 1.0 (18-NOV-19)                            Page 1
+
+
+    1             / RK05 BOOTSTRAP VERSION 1.0 (18-NOV-19)
+    2             /
+    3             /
+    4             
+    5             / THIS BOOTSTRAP LOADS INIT FROM TRACK 2 INTO FIELD 2
+    6             / AND THEN BEGINS EXECUTION AT 24200.
+    7             / ENSURE PDP-8 IS CLEARED BEFORE EXECUTION. 
+    8             
+    9       6741  DSKP=   6741
+   10       6742  DCLR=   6742
+   11       6743  DLAG=   6743
+   12       6744  DLCA=   6744
+   13       6745  DRST=   6745
+   14       6746  DLDC=   6746
+   15             
+   16       0200  *200
+   17             
+   18 00200 1222  START,  TAD     CADDR
+   19 00201 6744          DLCA
+   20 00202 1223          TAD     CMD
+   21 00203 6746          DLDC   
+   22 00204 1221          TAD     DADDR
+   23 00205 6743          DLAG
+   24 00206 6741  WAIT,   DSKP
+   25 00207 5206          JMP WAIT        / WAIT FOR READ TO COMPLETE 
+   26 00210 7200          CLA
+   27 00211 1222          TAD     CADDR
+   28 00212 1226          TAD     C0400   / NEXT CORE ADDRESS
+   29 00213 3222          DCA     CADDR
+   30 00214 2221          ISZ     DADDR   / NEXT DISK ADDRESS
+   31 00215 2224          ISZ     COUNT
+   32 00216 5200          JMP     START   / NEXT SECTOR 
+   33 00217 6223          CDI     20      
+   34 00220 5625          JMP I   ENTRY   / AND WE'RE OFF.        
+   35             
+   36 00221 0040  DADDR,  0040            / TRACK 2
+   37 00222 0000  CADDR,  0               / CORE ADDRESS
+   38 00223 0020  CMD,    0020            / READ, TO FIELD 2, DRIVE 0, NO INTERRUPT.
+   39 00224 7762  COUNT,  -16             / COUNT OF SECTORS TO BE READ
+   40 00225 4200  ENTRY,  4200            / ENTRYPOINT FOR INIT
+   41 00226 0400  C0400,  0400
+
+      No detected errors
