@@ -114,7 +114,7 @@ Several programs are at your disposal ("R CAT" while logged in under the Librari
 
 Reconfiguring the system
 ------------------------
-tss8_rk_lcm.dsk was built for a PDP-8/e/f/m system with 32KW of core, a TC08 dectape controller, a high-speed paper-tape reader and 8 KL8E/KL8JA asynchronous serial lines.  If your PDP-8 has different a different hardware configuration than this, you may want to reconfigure and rebuild TSS-8.  (This is required if you have less than 32KW of core or have a different CPU type.  Nonexistent hardware doesn't generally cause issues, but removing supporting code from the system can free up extra core for TSS-8 structures.)
+tss8_rk_lcm.dsk was built for a PDP-8/e/f/m system with 32KW of core, a TC08 dectape controller, a high-speed paper-tape reader and 8 KL8E/KL8JA asynchronous serial lines.  If your PDP-8 has different a different hardware configuration than this, you may want to reconfigure and rebuild TSS-8.  (This is required if you have less than 32KW of core or have a different CPU type or EAE configuration.  Nonexistent hardware doesn't generally cause issues, but removing supporting code from the system can free up extra core for TSS-8 structures.)
 
 Most of the configuration is in tss8_lcm2/melrose.pal -- this is fairly straightforward:  set the parameters to correspond with your hardware.
 
